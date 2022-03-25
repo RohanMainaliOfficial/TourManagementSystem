@@ -1,3 +1,3 @@
 # TourManagementSystem
-##before starting project go inside frontend directory and run this code "npm run build"
-##"Happy Coding"
+before starting project go inside frontend directory and run this code "npm run build"
+"Happy Coding"
