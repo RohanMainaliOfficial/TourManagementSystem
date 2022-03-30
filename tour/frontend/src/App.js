@@ -1,6 +1,12 @@
 import React from 'react';
 import './App.css';
 
+import {BrowserRouter,Route,Routes,Link} from 'react-router-dom';
+import AddForm from './Components/AddForm';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Navbarcomp from './Components/Navbarcomp';
+
+
 
 
 class App extends React.Component{
@@ -101,7 +107,9 @@ class App extends React.Component{
     var self=this  // since this is not available inside the loop we use self
     return(
 
+
       <div className="container">
+
 
         <div id="task-container">
            <div id="form-wrapper">
@@ -141,6 +149,8 @@ class App extends React.Component{
                 </div>
                     )
                 })}
+
+                <Link to="/add">Add</Link>
             </div>
 
             <div>
