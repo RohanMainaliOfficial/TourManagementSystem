@@ -19,8 +19,9 @@ class PackageViewSet(viewsets.ModelViewSet):
         id = request.data['id']
         description = request.data['description']
         price = request.data['price']
+        category=request.data['category']
         seat = request.data['seat']
-        Packages.objects.create(name=name,image=image,id=id,description=description,price=price,seat=seat)
+        Packages.objects.create(name=name,image=image,id=id,description=description,price=price,seat=seat,category='category')
         return HttpResponse({'Package created'},status=200)
 
 
@@ -45,7 +46,7 @@ def package_list(request):
 #     Package=Packages.objects.get(id=pk)
 #     serializeObj=PackageSerializer(Package,many='false')
 #     return Response(serializeObj.data)
-#
+
 @api_view(['POST'])
 def create_package(request):
     serializeObj=PackageSerializer(data=request.data)
@@ -61,11 +62,11 @@ def create_package(request):
 #         serializeObj.save()
 #     return Response(serializeObj.data)
 #
-# @api_view(['DELETE'])
-# def delete_package(request,pk):
-#     Package=Packages.objects.get(id=pk)
-#     Package.delete()
-#
-#     return Response("Package Deleted Successfully")
-#
+@api_view(['DELETE'])
+def delete_package(request,pk):
+    Package=Packages.objects.get(id=pk)
+    Package.delete()
+
+    return Response("Package Deleted Successfully")
+
 #

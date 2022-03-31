@@ -10,6 +10,7 @@ class Packages(models.Model):
     description=models.CharField(max_length=500)
     price=models.IntegerField(max_length=10, null=True)
     seat=models.IntegerField(max_length=100, null=True)
+    category=models.CharField(max_length=50,null=True)
     image=models.ImageField(_("image"),upload_to=upload_to )
 
     def __str__(self):

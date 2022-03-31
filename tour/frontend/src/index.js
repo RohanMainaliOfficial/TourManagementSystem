@@ -7,6 +7,7 @@ import {BrowserRouter,Route,Routes} from 'react-router-dom';
 
 import AddForm from './Components/AddForm';
 import Navbarcomp from './Components/Navbarcomp';
+import Update from './Components/Update';
 
 ReactDOM.render(
   <React.StrictMode>
