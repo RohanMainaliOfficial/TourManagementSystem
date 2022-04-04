@@ -19,6 +19,7 @@ ReactDOM.render(
 
                     <Route path="/" element={<Navbarcomp/>} />
                     <Route path="/add" element={<AddForm/>} />
+                    <Route path="/update" element={<Update/>} />
                 </Routes>
         </BrowserRouter>
   </React.StrictMode>,

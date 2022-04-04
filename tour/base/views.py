@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from rest_framework import viewsets
 
@@ -46,6 +46,23 @@ def package_list(request):
 #     Package=Packages.objects.get(id=pk)
 #     serializeObj=PackageSerializer(Package,many='false')
 #     return Response(serializeObj.data)
+from .forms import UploadFileForm
+
+# Imaginary function to handle an uploaded file.
+
+def handle_uploaded_file(param):
+    pass
+
+
+def upload_file(request):
+    if request.method == 'POST':
+        form = UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            handle_uploaded_file(request.FILES['file'])
+            return HttpResponseRedirect('/success/url/')
+    else:
+        form = UploadFileForm()
+    return render(request, 'upload.html', {'form': form})
 
 @api_view(['POST'])
 def create_package(request):
@@ -54,13 +71,19 @@ def create_package(request):
         serializeObj.save()
     return Response(serializeObj.data)
 #
-# @api_view(['POST'])
-# def update_package(request,pk):
-#     Package=Packages.objects.get(id=pk)
-#     serializeObj=PackageSerializer(instance=Package,data=request.data)
-#     if serializeObj.is_valid():
-#         serializeObj.save()
-#     return Response(serializeObj.data)
+@api_view(['PATCH'])
+def update_package(request,pk):
+
+    Package=Packages.objects.get(id=pk)
+
+    serializeObj=PackageSerializer(instance=Package,data=request.data)
+    data={}
+    if serializeObj.is_valid():
+        serializeObj.save()
+        data["success"]="update succesfully"
+        return Response(data=data)
+
+    return Response(serializeObj.errors)
 #
 @api_view(['DELETE'])
 def delete_package(request,pk):

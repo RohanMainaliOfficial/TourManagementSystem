@@ -1,4 +1,3 @@
-
 import React,{ useState } from 'react';
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
@@ -14,6 +13,7 @@ function Addform(){
     const[price,setPrice]=useState();
     const[category,setCategory]=useState();
     const[seat,setSeat]=useState();
+    console.log("lkj")
 
 
     const newPackage=()=>{
@@ -42,7 +42,7 @@ function Addform(){
 
     return(
             <div>
- <form className="form">
+ <form className="form" enctype="multipart/form-data">
   <label>
     Name:
     <input type="text" name="name" value={name}  onChange={(e)=>setName(e.target.value)} />
@@ -74,7 +74,7 @@ function Addform(){
 </select>
 
 
-  <input type="file" accept="image/*" onChange={(e)=> setImage(e.target.files[0]) }/>
+  <input type="file" accept="image/*"  onChange={(e)=> setImage(e.target.files[0]) }/>
 
 </form>
 <button onClick={()=>newPackage()}>Submit</button>

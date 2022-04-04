@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {useState} from "react";
 import {
   Navbar,
   Nav,
@@ -15,12 +16,11 @@ import {
   OverlayTrigger,
 } from "react-bootstrap";
 import { Card } from "react-bootstrap";
-import image1 from "./image1.jpg";
-import image2 from "./image2.jpg";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
 import './Style.css';
 import AddForm from './AddForm';
+import Dialogue from './Dialogue';
 import Update from './Update';
 import {Link} from 'react-router-dom';
 import {Modal} from 'react-modal';
@@ -30,10 +30,16 @@ import {BrowserRouter,Route,Routes} from 'react-router-dom';
 
 export default class Navbarcomp extends Component {
 
+
+
     constructor(props){
     super(props);
     this.state={
           packages:[],
+          dialogue:{
+         message:"",
+        isLoading:false,
+         },
        activeItem:{
        id:null,
        name:'',
@@ -42,17 +48,21 @@ export default class Navbarcomp extends Component {
        category:'',
        seat:'',
        image:'',
+       files:'',
 
        },
        editing: false
            }
 //           calling functions
        this.fetchPackage=this.fetchPackage.bind(this)
+       this.handleDelete=this.handleDelete.bind(this)
 
     };
 
     componentWillMount(){
         this.fetchPackage()
+        this.handleDelete()
+
     }
 // ----------------------feting Data from api --------------------------------------------------------------
     fetchPackage(){
@@ -61,9 +71,17 @@ export default class Navbarcomp extends Component {
         fetch('http://127.0.0.1:8000/api/packages/')
         .then(response=>response.json())
         .then(data=>this.setState({packages:data}))
+
     }
  onClick(){
     <Link to="/update"></Link>
+}
+
+
+
+handleDelete(id){
+console.log("inside")
+
 }
 
 
@@ -73,6 +91,7 @@ export default class Navbarcomp extends Component {
 
   render() {
     var packages=this.state.packages
+    var dialogue=this.state.dialogue
     var self=this
 
     return (
@@ -161,8 +180,10 @@ export default class Navbarcomp extends Component {
                       {package_item.description}
                     </Card.Text>
                     <div className="btn-right">
-                    <button type="submit" className="btn-update button" onClick={()=>console.log(package_item.id)}>Update</button>
-                    <button type="submit" className="btn-delete button">Delete</button>
+                   <Link to= '/update' state= {{
+                   item:package_item
+                   }}> <button type="submit" className="btn-update button" onClick={()=>console.log(package_item.id)}>Update</button></Link>
+                    <button  className="btn-delete button" onClick={self.handleDelete(package_item.id)}>Delete</button>
                     </div>
                 </Card>
                 <br />
@@ -173,7 +194,7 @@ export default class Navbarcomp extends Component {
              </Row>
 
           </Container>
-
+            {dialogue.isLoading && <Dialogue message={dialogue.message}/>}
 
       </div>
     );
