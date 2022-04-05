@@ -36,32 +36,20 @@ export default class Navbarcomp extends Component {
     super(props);
     this.state={
           packages:[],
-          dialogue:{
-         message:"",
-        isLoading:false,
-         },
-       activeItem:{
-       id:null,
-       name:'',
-       description: '',
-       price:null,
-       category:'',
-       seat:'',
-       image:'',
-       files:'',
 
+       activeItem:{
+        message:"",
+        isLoading:false,
+        id:0,
        },
        editing: false
            }
-//           calling functions
        this.fetchPackage=this.fetchPackage.bind(this)
-       this.handleDelete=this.handleDelete.bind(this)
 
     };
 
     componentWillMount(){
         this.fetchPackage()
-        this.handleDelete()
 
     }
 // ----------------------feting Data from api --------------------------------------------------------------
@@ -73,25 +61,50 @@ export default class Navbarcomp extends Component {
         .then(data=>this.setState({packages:data}))
 
     }
+
+//    -------------------------------------------------------------------------------
  onClick(){
     <Link to="/update"></Link>
 }
 
 
+//--------------------------Display Confirm Delete message---------------------------------------------------------
+handleDelete(id,name){
+this.setState({
+            activeItem:{
+                 message:`Are you sure you want to delete ${name} Package?`,
+                 isLoading:true,
+                 id:id,
+       }
+       })
+}
 
-handleDelete(id){
-console.log("inside")
+//--------------------------------------------------------------------------------------------------------------------
+
+conformDelete(choice){
+      console.log(this.state.activeItem.id);
+    this.setState({
+                activeItem:{
+                isLoading:false,
+                }})
+           const url=`http://127.0.0.1:8000/api/delete-package/${this.state.activeItem.id}/`;
+           fetch(url,{
+        method: 'DELETE',
+        })
+         .then(response=> response.json())
+            .then(data=>console.log(data))
+        .catch(error=> console.log(error))
+        console.log('submitted');
+        this.setState({packages:this.state.packages.map(package_item=>package_item.id!==this.state.activeItem.id)})
+        this.fetchPackage();
+
 
 }
 
 
-//    const updatePackage(id,updatedPackage)=>{
-//        this.state.packages(packages.map((package)=>package.id===id? updatedPackage: package))
-//    }
-
   render() {
     var packages=this.state.packages
-    var dialogue=this.state.dialogue
+    var activeItem=this.state.activeItem
     var self=this
 
     return (
@@ -183,7 +196,7 @@ console.log("inside")
                    <Link to= '/update' state= {{
                    item:package_item
                    }}> <button type="submit" className="btn-update button" onClick={()=>console.log(package_item.id)}>Update</button></Link>
-                    <button  className="btn-delete button" onClick={self.handleDelete(package_item.id)}>Delete</button>
+                    <button  className="btn-delete button" onClick={()=>self.handleDelete(package_item.id,package_item.name)}>Delete</button>
                     </div>
                 </Card>
                 <br />
@@ -194,7 +207,7 @@ console.log("inside")
              </Row>
 
           </Container>
-            {dialogue.isLoading && <Dialogue message={dialogue.message}/>}
+            {activeItem.isLoading && <Dialogue onDialog={()=>self.conformDelete()} message={activeItem.message}/>}
 
       </div>
     );
