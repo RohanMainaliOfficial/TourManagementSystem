@@ -1,4 +1,4 @@
-function Dialogue({ message, onDialog, nameProduct }) {
+function Dialogue({ message, onDialog, onCheck,nameProduct }) {
   return (
     <div
       style={{
@@ -44,7 +44,7 @@ function Dialogue({ message, onDialog, nameProduct }) {
             Yes
           </button>
           <button
-            onClick={() => onDialog(false)}
+            onClick={() => onCheck()}
             style={{
               background: "green",
               color: "white",
