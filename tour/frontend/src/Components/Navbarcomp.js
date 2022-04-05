@@ -41,6 +41,7 @@ export default class Navbarcomp extends Component {
         message:"",
         isLoading:false,
         id:0,
+        check:true,
        },
        editing: false
            }
@@ -75,19 +76,28 @@ this.setState({
                  message:`Are you sure you want to delete ${name} Package?`,
                  isLoading:true,
                  id:id,
+                 check:true,
        }
        })
+}
+
+checkOption(check){
+check=false;
+this.conformDelete(check);
+
 }
 
 //--------------------------------------------------------------------------------------------------------------------
 
 conformDelete(choice){
-      console.log(this.state.activeItem.id);
+
+    if(choice){
     this.setState({
                 activeItem:{
                 isLoading:false,
+                check:true,
                 }})
-           const url=`http://127.0.0.1:8000/api/delete-package/${this.state.activeItem.id}/`;
+    const url=`http://127.0.0.1:8000/api/delete-package/${this.state.activeItem.id}/`;
            fetch(url,{
         method: 'DELETE',
         })
@@ -97,6 +107,18 @@ conformDelete(choice){
         console.log('submitted');
         this.setState({packages:this.state.packages.map(package_item=>package_item.id!==this.state.activeItem.id)})
         this.fetchPackage();
+    }
+    else{
+    console.log("You Clicked No");
+    }
+
+
+
+      this.setState({
+      activeItem:{
+      isLoading:false,
+      check:true,
+        }})
 
 
 }
@@ -207,7 +229,7 @@ conformDelete(choice){
              </Row>
 
           </Container>
-            {activeItem.isLoading && <Dialogue onDialog={()=>self.conformDelete()} message={activeItem.message}/>}
+            {activeItem.isLoading && <Dialogue onDialog={()=>self.conformDelete(activeItem.check)}  onCheck={()=>self.checkOption(activeItem.check)}message={activeItem.message}/>}
 
       </div>
     );
