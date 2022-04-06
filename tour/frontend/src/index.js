@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter,Route,Routes} from 'react-router-dom';
 
-import AddForm from './Components/AddForm';
-import Navbarcomp from './Components/Navbarcomp';
-import Update from './Components/Update';
+// import AddForm from './Components/AddForm';
+// import Navbarcomp from './Components/Navbarcomp';
+// import Update from './Components/Update';
+import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -16,10 +16,11 @@ ReactDOM.render(
 
         <BrowserRouter>
                 <Routes>
-
-                    <Route path="/" element={<Navbarcomp/>} />
+{/* <Route path="/" element={<Navbarcomp/>} />
                     <Route path="/add" element={<AddForm/>} />
-                    <Route path="/update" element={<Update/>} />
+                    <Route path="/update" element={<Update/>} /> */}
+                    <Route path="/" element={<App/>} />
+                    
                 </Routes>
         </BrowserRouter>
   </React.StrictMode>,
