@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {useState} from "react";
 import {
   Navbar,
   Nav,
@@ -15,24 +16,127 @@ import {
   OverlayTrigger,
 } from "react-bootstrap";
 import { Card } from "react-bootstrap";
-import image1 from "./image1.jpg";
-import image2 from "./image2.jpg";
-import "./style.css";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
+import './Style.css';
+import AddForm from './AddForm';
+import Dialogue from './Dialogue';
+import Update from './Update';
+import {Link} from 'react-router-dom';
+import {Modal} from 'react-modal';
+import {BrowserRouter,Route,Routes} from 'react-router-dom';
+
+
 
 export default class Navbarcomp extends Component {
+
+
+
+    constructor(props){
+    super(props);
+    this.state={
+          packages:[],
+
+       activeItem:{
+        message:"",
+        isLoading:false,
+        id:0,
+        check:true,
+       },
+       editing: false
+           }
+       this.fetchPackage=this.fetchPackage.bind(this)
+
+    };
+
+    componentWillMount(){
+        this.fetchPackage()
+
+    }
+// ----------------------feting Data from api --------------------------------------------------------------
+    fetchPackage(){
+
+        console.log("Fetching....")
+        fetch('http://127.0.0.1:8000/api/packages/')
+        .then(response=>response.json())
+        .then(data=>this.setState({packages:data}))
+
+    }
+
+//    -------------------------------------------------------------------------------
+ onClick(){
+    <Link to="/update"></Link>
+}
+
+
+//--------------------------Display Confirm Delete message---------------------------------------------------------
+handleDelete(id,name){
+this.setState({
+            activeItem:{
+                 message:`Are you sure you want to delete ${name} Package?`,
+                 isLoading:true,
+                 id:id,
+                 check:true,
+       }
+       })
+}
+
+checkOption(check){
+check=false;
+this.conformDelete(check);
+
+}
+
+//--------------------------------------------------------------------------------------------------------------------
+
+conformDelete(choice){
+
+    if(choice){
+    this.setState({
+                activeItem:{
+                isLoading:false,
+                check:true,
+                }})
+    const url=`http://127.0.0.1:8000/api/delete-package/${this.state.activeItem.id}/`;
+           fetch(url,{
+        method: 'DELETE',
+        })
+         .then(response=> response.json())
+            .then(data=>console.log(data))
+        .catch(error=> console.log(error))
+        console.log('submitted');
+        this.setState({packages:this.state.packages.map(package_item=>package_item.id!==this.state.activeItem.id)})
+        this.fetchPackage();
+    }
+    else{
+    console.log("You Clicked No");
+    }
+
+
+
+      this.setState({
+      activeItem:{
+      isLoading:false,
+      check:true,
+        }})
+
+
+}
+
+
   render() {
+    var packages=this.state.packages
+    var activeItem=this.state.activeItem
+    var self=this
+
     return (
       <div
         style={{
-          backgroundImage: `url(${image2})`,
           backgroundPosition: "center",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           backgroundAttachment:"fixed",
-          width: "100vw",
-          height: "100vh",
+
         }}
       >
         <Navbar variant="dark" expand="lg">
@@ -73,7 +177,7 @@ export default class Navbarcomp extends Component {
             </Navbar.Collapse>
           </Container>
         </Navbar>
-        
+
         {/* ======================================================================================= */}
         <div
           style={{
@@ -92,157 +196,41 @@ export default class Navbarcomp extends Component {
             )}
           >
             <Fab color="primary" aria-label="add">
-              <AddIcon />
+            <Link to="/add"><AddIcon style={{color:"white"}}/></Link>
+
             </Fab>
           </OverlayTrigger>
         </div>
         {/* ======================================================================================================= */}
           <Container>
-            <Row>
+          <Row>
+
+            {packages.map(function(package_item){
+             return(
               <Col md={{ span: 3 }}>
                 {/* ======================================================================= */}
-                <Card className="bg-dark text-white">
-                  <Card.Img src={image1} alt="Card image" fluid />
-                  <Card.ImgOverlay>
-                    <Card.Title>Package Details</Card.Title>
+                <Card className="card bg-light text-black">
+                    <Card.Title>{package_item.name}</Card.Title>
                     <Card.Text>
-                      This is a wider card with supporting text below as a
-                      natural lead-in to additional content. This content is a
-                      little bit longer.
+                      {package_item.description}
                     </Card.Text>
-                  </Card.ImgOverlay>
+                    <div className="btn-right">
+                   <Link to= '/update' state= {{
+                   item:package_item
+                   }}> <button type="submit" className="btn-update button" onClick={()=>console.log(package_item.id)}>Update</button></Link>
+                    <button  className="btn-delete button" onClick={()=>self.handleDelete(package_item.id,package_item.name)}>Delete</button>
+                    </div>
                 </Card>
                 <br />
               </Col>
-              {/*=======================================================================  */}
-              <Col md={{ span: 3 }}>
-                <Card className="bg-dark text-white">
-                  <Card.Img src={image1} alt="Card image" fluid />
-                  <Card.ImgOverlay>
-                    <Card.Title>Package Details</Card.Title>
-                    <Card.Text>
-                      This is a wider card with supporting text below as a
-                      natural lead-in to additional content. This content is a
-                      little bit longer.
-                    </Card.Text>
-                  </Card.ImgOverlay>
-                </Card>
-                <br />
-              </Col>
-              <Col md={{ span: 3 }}>
-                <Card className="bg-dark text-white">
-                  <Card.Img src={image1} alt="Card image" fluid />
-                  <Card.ImgOverlay>
-                    <Card.Title>Package Details</Card.Title>
-                    <Card.Text>
-                      This is a wider card with supporting text below as a
-                      natural lead-in to additional content. This content is a
-                      little bit longer.
-                    </Card.Text>
-                  </Card.ImgOverlay>
-                </Card>
-                <br />
-              </Col>
-              <Col md={{ span: 3 }}>
-                <Card className="bg-dark text-white">
-                  <Card.Img src={image1} alt="Card image" fluid />
-                  <Card.ImgOverlay>
-                    <Card.Title>Package Details</Card.Title>
-                    <Card.Text>
-                      This is a wider card with supporting text below as a
-                      natural lead-in to additional content. This content is a
-                      little bit longer.
-                    </Card.Text>
-                  </Card.ImgOverlay>
-                </Card>
-                <br />
-              </Col>
-              <Col md={{ span: 3 }}>
-                <Card className="bg-dark text-white">
-                  <Card.Img src={image1} alt="Card image" fluid />
-                  <Card.ImgOverlay>
-                    <Card.Title>Package Details</Card.Title>
-                    <Card.Text>
-                      This is a wider card with supporting text below as a
-                      natural lead-in to additional content. This content is a
-                      little bit longer.
-                    </Card.Text>
-                  </Card.ImgOverlay>
-                </Card>
-                <br />
-              </Col>
-              <Col md={{ span: 3 }}>
-                <Card className="bg-dark text-white">
-                  <Card.Img src={image1} alt="Card image" fluid />
-                  <Card.ImgOverlay>
-                    <Card.Title>Package Details</Card.Title>
-                    <Card.Text>
-                      This is a wider card with supporting text below as a
-                      natural lead-in to additional content. This content is a
-                      little bit longer.
-                    </Card.Text>
-                  </Card.ImgOverlay>
-                </Card>
-                <br />
-              </Col>
-              <Col md={{ span: 3 }}>
-                <Card className="bg-dark text-white">
-                  <Card.Img src={image1} alt="Card image" fluid />
-                  <Card.ImgOverlay>
-                    <Card.Title>Package Details</Card.Title>
-                    <Card.Text>
-                      This is a wider card with supporting text below as a
-                      natural lead-in to additional content. This content is a
-                      little bit longer.
-                    </Card.Text>
-                  </Card.ImgOverlay>
-                </Card>
-                <br />
-              </Col>
-              <Col md={{ span: 3 }}>
-                <Card className="bg-dark text-white">
-                  <Card.Img src={image1} alt="Card image" fluid />
-                  <Card.ImgOverlay>
-                    <Card.Title>Package Details</Card.Title>
-                    <Card.Text>
-                      This is a wider card with supporting text below as a
-                      natural lead-in to additional content. This content is a
-                      little bit longer.
-                    </Card.Text>
-                  </Card.ImgOverlay>
-                </Card>
-                <br />
-              </Col>
-              <Col md={{ span: 3 }}>
-                <Card className="bg-dark text-white">
-                  <Card.Img src={image1} alt="Card image" fluid />
-                  <Card.ImgOverlay>
-                    <Card.Title>Package Details</Card.Title>
-                    <Card.Text>
-                      This is a wider card with supporting text below as a
-                      natural lead-in to additional content. This content is a
-                      little bit longer.
-                    </Card.Text>
-                  </Card.ImgOverlay>
-                </Card>
-                <br />
-              </Col>
-              <Col md={{ span: 3 }}>
-                <Card className="bg-dark text-white">
-                  <Card.Img src={image1} alt="Card image" fluid />
-                  <Card.ImgOverlay>
-                    <Card.Title>Package Details</Card.Title>
-                    <Card.Text>
-                      This is a wider card with supporting text below as a
-                      natural lead-in to additional content. This content is a
-                      little bit longer.
-                    </Card.Text>
-                  </Card.ImgOverlay>
-                </Card>
-                <br />
-              </Col>
-            </Row>
+
+                    )
+                })}
+             </Row>
+
           </Container>
+            {activeItem.isLoading && <Dialogue onDialog={()=>self.conformDelete(activeItem.check)}  onCheck={()=>self.checkOption(activeItem.check)}message={activeItem.message}/>}
+
       </div>
     );
   }

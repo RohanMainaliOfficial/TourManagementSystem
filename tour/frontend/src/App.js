@@ -1,11 +1,11 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Navbarcomp from './components/Navbarcomp';
+import Login from './admin_login/login';
 
 function App() {
   return (
     <div className='App'>
-      <Navbarcomp/> 
+      <Login/> 
     </div>
   );
 }
