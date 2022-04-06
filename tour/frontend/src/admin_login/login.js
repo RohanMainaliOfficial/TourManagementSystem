@@ -5,8 +5,10 @@ export default class login extends Component {
   render() {
     return (
       <div>
+           {/* ----------------------------------Form starts here----------------------------------- */}
         <Form>
           <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
+              {/* -----------------------------------Username---------------------------------------- */}
             <Form.Label column sm="2">
               Username:
             </Form.Label>
@@ -20,6 +22,7 @@ export default class login extends Component {
             className="mb-3"
             controlId="formPlaintextPassword"
           >
+              {/* -----------------------------------Password------------------------------------------- */}
             <Form.Label column sm="2">
               Password
             </Form.Label>
@@ -29,6 +32,7 @@ export default class login extends Component {
           </Form.Group>
         </Form>
         <>
+        {/* -------------------------------------------button lies here----------------------------------- */}
           <Button variant="dark" size="lg">Login</Button>{" "}
         </>
       </div>
