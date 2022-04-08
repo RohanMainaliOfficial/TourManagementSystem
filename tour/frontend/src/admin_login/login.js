@@ -1,41 +1,53 @@
 import React, { Component } from "react";
-import { Form, Row, Col, Button } from "react-bootstrap";
+import "./styles.css";
+import { Form, Button } from "react-bootstrap";
 
 export default class login extends Component {
+
+  state = {
+    Credentials: {username: '', password: ''}
+  }
+
+  login = event => {
+    console.log(this.state.Credentials);
+    fetch('')
+  }
+
+  inputChanged = event => {
+    const cred = this.state.Credentials;
+    cred[event.target.name] = event.target.value;
+    this.setState({Credentials: cred});
+  }
+
   render() {
     return (
-      <div>
-           {/* ----------------------------------Form starts here----------------------------------- */}
-        <Form>
-          <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
-              {/* -----------------------------------Username---------------------------------------- */}
-            <Form.Label column sm="2">
-              Username:
-            </Form.Label>
-            <Col sm="10">
-              <Form.Control type="text" placeholder="Username" />
-            </Col>
-          </Form.Group>
+      <Form>
+        <div className="box-mid">
+        <h3>Admin Login</h3>
+                <div className="form-group">
+                    <label>Username</label>
+                    <input type="text" className="form-control" 
+                    placeholder="Username" name="username"
+                    value={this.state.Credentials.username}
+                    onChange={this.inputChanged}/>
+                </div>
+                
+                <div className="form-group">
+                    <label>Password</label>
+                    <input type="password" className="form-control" 
+                    placeholder="Enter password" name="password"
+                    value={this.state.Credentials.password}
+                    onChange={this.inputChanged}/>
+                </div>
+                <div className="form-group">
+                    
+                </div>
+                <Button onClick={this.login} className="btn btn-dark btn-block">Login</Button>
+        </div>
+                
+                
+            </Form>
 
-          <Form.Group
-            as={Row}
-            className="mb-3"
-            controlId="formPlaintextPassword"
-          >
-              {/* -----------------------------------Password------------------------------------------- */}
-            <Form.Label column sm="2">
-              Password
-            </Form.Label>
-            <Col sm="10">
-              <Form.Control type="password" placeholder="Password" />
-            </Col>
-          </Form.Group>
-        </Form>
-        <>
-        {/* -------------------------------------------button lies here----------------------------------- */}
-          <Button variant="dark" size="lg" /* onClick={()=>Packagename() */  >Login</Button>{" "}
-        </>
-      </div>
     );
   }
 }
