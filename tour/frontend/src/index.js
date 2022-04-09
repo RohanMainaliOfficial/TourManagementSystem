@@ -8,6 +8,8 @@ import {BrowserRouter,Route,Routes} from 'react-router-dom';
 import AddForm from './Components/AddForm';
 import Navbarcomp from './Components/Navbarcomp';
 import Update from './Components/Update';
+import Login from './Components/Login';
+import Protected from './Components/Protected';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -17,10 +19,15 @@ ReactDOM.render(
         <BrowserRouter>
                 <Routes>
 
-                    <Route path="/" element={<Navbarcomp/>} />
+                    <Route path="/" element={<Login/>} />
                     <Route path="/add" element={<AddForm/>} />
                     <Route path="/update" element={<Update/>} />
+                    <Route exact path='/admin' element={<Protected/>}>
+                        <Route exact path='/admin' element={<Navbarcomp/>}/>
+                    </Route>
+
                 </Routes>
+
         </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')

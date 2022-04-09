@@ -8,6 +8,7 @@ from .serialize import PackageSerializer
 from rest_framework.decorators import api_view
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from django.contrib.auth.decorators import login_required
 
 class PackageViewSet(viewsets.ModelViewSet):
     queryset = Packages.objects.all()
@@ -35,6 +36,7 @@ def apiOverview(request):
         'Create':'/package-create/',
     }
     return Response(api_urls)
+
 @api_view(['GET'])
 def package_list(request):
     Package=Packages.objects.all()
