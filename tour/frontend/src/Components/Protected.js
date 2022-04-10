@@ -12,6 +12,7 @@ const Protected = ({authentication}) => {
 
     // If authorized, return an outlet that will render child elements
     // If not, return element that will navigate to login page
-    return true ? < Navbarcomp/> : <Navigate to="/" />;
+   
+    return localStorage.getItem('check') ? < Navbarcomp/> : <Navigate to="/" />;
 }
 export default Protected;

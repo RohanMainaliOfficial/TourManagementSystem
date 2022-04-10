@@ -10,6 +10,8 @@ export default class Login extends Component{
 
 
    constructor(props){
+   localStorage.clear();
+
     super(props);
     this.state={
         authenticated: false,
@@ -26,6 +28,7 @@ export default class Login extends Component{
 
 isAuth(){
 this.setState({authenticated:true,});
+localStorage.setItem('check',true);
 }
 onClick(){
 console.log("hello");
@@ -57,13 +60,8 @@ return(
         }
         }}>Login</button>
 
-
-
-
-
 </div>
 
 );
-
 }
 }
