@@ -1,7 +1,7 @@
 
 import React,{ useState } from 'react';
 import {useLocation} from 'react-router-dom';
-import {package_item} from './Navbarcomp'
+//import {package_item} from './Navbarcomp'
 import './form.css'
 
     let editImage=0;

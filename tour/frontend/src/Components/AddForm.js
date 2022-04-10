@@ -1,4 +1,6 @@
 import React,{ useState } from 'react';
+import {Form, Button} from "react-bootstrap";
+import "./form.css"
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 
@@ -41,42 +43,54 @@ function Addform(){
 
     return(
             <div>
- <form className="form" enctype="multipart/form-data">
-  <label>
-    Name:
-    <input type="text" name="name" value={name}  onChange={(e)=>setName(e.target.value)} />
+              <h1>New Package</h1>
+ <Form className="form" enctype="multipart/form-data">
+  <div className='Pname'>
+    <label>
+    Package Name:</label>
+    <input type="text" class="form-control" name="name" value={name} placeholder="Package Name" onChange={(e)=>setName(e.target.value)} />
+    </div>
+    <div className='packageId'>
+  <label >
+    Package ID:
+    <input type="number" class="form-control" name="id" value={id}  onChange={(e)=>setId(e.target.value)}/>
+  
+  
   </label>
-  <label>
-    ID:
-    <input type="number" name="id" value={id}  onChange={(e)=>setId(e.target.value)}/>
-  </label>
-
-
-    <input type="textarea" placeholder="Description" name="description"
-     value={description}  onChange={(e)=>setDescription(e.target.value)}/>
+  </div>
+<div className='des'>
+  <label>Description: </label>
+  <textarea class="form-control" rows="4" name="description"
+     value={description}  onChange={(e)=>setDescription(e.target.value)}></textarea>
+<br></br>
 
       <label>
     Price:
-    <input type="number" name="price" value={price}  onChange={(e)=>setPrice(e.target.value)}/>
+    <input type="number" class="form-control" name="price" value={price}  onChange={(e)=>setPrice(e.target.value)}/>
   </label>
 
     <label>
     Seats:
-    <input type="number" name="seat" value={seat}  onChange={(e)=>setSeat(e.target.value)}/>
+    <input type="number" class="form-control" name="seat" value={seat}  onChange={(e)=>setSeat(e.target.value)}/>
   </label>
-  <label for="category">Category: </label>
-<select name="category" id="category"  onChange={(e)=>setCategory(e.target.value)}>
+  </div>
+  <div className='end'>
+  <label for="exampleFormControlSelect1">Category: </label>
+<select class="form-control" name="category" onChange={(e)=>setCategory(e.target.value)}>
+  <option value="">Package Type</option>
   <option value="Trekking">Trekking</option>
   <option value="Popular">Popular</option>
   <option value="Long">Long Tour</option>
   <option value="Short">Short</option>
 </select>
+<br></br>
 
-
+<label>Select image file of the destination :</label><br></br>
   <input type="file" accept="image/*"  onChange={(e)=> setImage(e.target.files[0]) }/>
+  </div>
+</Form>
+<Button onClick={()=>newPackage()}>Submit</Button>
 
-</form>
-<button onClick={()=>newPackage()}>Submit</button>
             </div>
 
     );
