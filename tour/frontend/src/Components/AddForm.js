@@ -13,7 +13,6 @@ function Addform(){
     const[price,setPrice]=useState();
     const[category,setCategory]=useState();
     const[seat,setSeat]=useState();
-    console.log("lkj")
 
 
     const newPackage=()=>{

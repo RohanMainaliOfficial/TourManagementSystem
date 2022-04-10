@@ -107,6 +107,7 @@ conformDelete(choice){
         console.log('submitted');
         this.setState({packages:this.state.packages.map(package_item=>package_item.id!==this.state.activeItem.id)})
         this.fetchPackage();
+
     }
     else{
     console.log("You Clicked No");
@@ -210,10 +211,11 @@ conformDelete(choice){
               <Col md={{ span: 3 }}>
                 {/* ======================================================================= */}
                 <Card className="card bg-light text-black">
-                    <Card.Title>{package_item.name}</Card.Title>
+                    <Card.Title className="title">{package_item.name}</Card.Title>
                     <Card.Text>
                       {package_item.description}
                     </Card.Text>
+                    <div>Price: Rs {package_item.price}</div>
                     <div className="btn-right">
                    <Link to= '/update' state= {{
                    item:package_item
