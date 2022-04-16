@@ -147,10 +147,15 @@ conformDelete(choice){
 
               </Col>
            */}
+            <Link to= '/package_details' state= {{
+                   item:package_item
+                   }}>
               <div className="packages" >
               <h3 className="package-name">{package_item.name + " Tour Package"}</h3>
               <img src={'http://127.0.0.1:8000'+package_item.image} className="package-image"/>
               <h4>{"Rs. "+package_item.price}</h4>
+
+
               <div className="btn-right">
                    <Link to= '/update' state= {{
                    item:package_item
@@ -159,6 +164,8 @@ conformDelete(choice){
                     </div>
 
               </div>
+              </Link>
+
 
 
                </>

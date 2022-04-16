@@ -4,6 +4,7 @@ import auth from './Login'
 import Navbarcomp from './Navbarcomp'
 import AddForm from './AddForm';
 import Update from './Update';
+import Package_detail from './Package-detail';
 
 function ProtectedRoute({element:Component,...rest}){
 
@@ -23,6 +24,11 @@ else if(Component.type.name==="Update"){
 return <Update/>
 
     }
+else if(Component.type.name==="Package_detail"){
+return <Package_detail/>
+
+    }
+
     }
 else{
    return <Navigate to="/"  />

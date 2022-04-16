@@ -8,6 +8,7 @@ import './Components/Style.css';
 import AddForm from './Components/AddForm';
 import Navbarcomp from './Components/Navbarcomp';
 import Update from './Components/Update';
+import Package_detail from './Components/Package-detail';
 import Login from "./admin_login/login";
 import ProtectedRoute from './Components/ProtectedRoute';
 
@@ -23,6 +24,7 @@ ReactDOM.render(
                     <Route path="/home" element=<ProtectedRoute element={<Navbarcomp/>} />  />
                     <Route path="/add" element=<ProtectedRoute element={<AddForm/>} />  />
                     <Route path="/update" element=<ProtectedRoute element={<Update/>} />  />
+                    <Route path="/package_details" element=<ProtectedRoute element={<Package_detail/>} />  />
                 </Routes>
         </BrowserRouter>
   </React.StrictMode>,
