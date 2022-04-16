@@ -4,10 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter,Route,Routes} from 'react-router-dom';
-
+import './Components/Style.css';
 import AddForm from './Components/AddForm';
 import Navbarcomp from './Components/Navbarcomp';
 import Update from './Components/Update';
+import Package_detail from './Components/Package-detail';
+import Login from "./admin_login/login";
+import ProtectedRoute from './Components/ProtectedRoute';
+
 
 ReactDOM.render(
   <React.StrictMode>
@@ -16,10 +20,11 @@ ReactDOM.render(
 
         <BrowserRouter>
                 <Routes>
-
-                    <Route path="/" element={<Navbarcomp/>} />
-                    <Route path="/add" element={<AddForm/>} />
-                    <Route path="/update" element={<Update/>} />
+                    <Route path="/" element={<Login/>} />
+                    <Route path="/home" element=<ProtectedRoute element={<Navbarcomp/>} />  />
+                    <Route path="/add" element=<ProtectedRoute element={<AddForm/>} />  />
+                    <Route path="/update" element=<ProtectedRoute element={<Update/>} />  />
+                    <Route path="/package_details" element=<ProtectedRoute element={<Package_detail/>} />  />
                 </Routes>
         </BrowserRouter>
   </React.StrictMode>,
