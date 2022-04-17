@@ -1,6 +1,6 @@
 import React from 'react';
 import {useLocation} from 'react-router-dom';
-import {package_item} from './Navbarcomp'
+import {package_item} from './Navbarcomp';
 import './ViewPackage.css';
 
 function Package_detail(){
