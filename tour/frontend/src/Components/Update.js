@@ -40,18 +40,11 @@ function Update() {
       .then((data) => console.log(data))
       .catch((error) => console.log(error));
 
-<<<<<<< HEAD
-    console.log('submitted');
-    console.log(image)
-window.location.replace("http://localhost:3000/home");
-    }
-=======
     console.log("submitted");
     console.log(image);
 
     window.location.replace("http://localhost:3000/home");
   };
->>>>>>> prabesh
 
   return (
     <div>
