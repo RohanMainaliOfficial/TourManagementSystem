@@ -30,8 +30,6 @@ INSTALLED_APPS = [
     'tour',
     'rest_framework',
     'corsheaders',
-'rest_framework.authtoken',
-
 ]
 
 MIDDLEWARE = [
@@ -65,14 +63,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'tour.wsgi.application'
 
-REST_FRAMEWORK = {
 
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
-
-}
 
 
 
