@@ -4,7 +4,6 @@
 }
 
 body {
-  min-height: 100vh;
   display: flex;
   justify-content: center;
   font-weight: 400;
@@ -15,15 +14,12 @@ h3{
   font-family: 'Fira Sans', sans-serif;
 }
 
-button{
-    display: flex;
-    margin-top: 5%;
-}
+
 .box-mid{
 
     border-radius: 30px;
-    border: 40px solid rgb(148, 152, 163);
-    height: 230px;
+    border: 50px solid rgb(148, 152, 163);
+    height: 260px;
     background-color: rgb(148, 152, 163);
     animation: mymove 4s infinite;
 }

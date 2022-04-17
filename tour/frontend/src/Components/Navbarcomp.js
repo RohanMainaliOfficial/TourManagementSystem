@@ -4,13 +4,16 @@ import {useState} from "react";
 
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
-import Style from './Style.css';
+import './Style.css';
+import { Button, CardGroup, Container, Row } from "react-bootstrap";
 import AddForm from './AddForm';
 import Dialogue from './Dialogue';
 import Update from './Update';
 import {Link} from 'react-router-dom';
 import {Modal} from 'react-modal';
+import { Card, Col } from "react-bootstrap";
 import {BrowserRouter,Route,Routes} from 'react-router-dom';
+import { Tooltip } from "@mui/material";
 
 
 
@@ -94,6 +97,8 @@ conformDelete(choice){
         this.setState({packages:this.state.packages.map(package_item=>package_item.id!==this.state.activeItem.id)})
         this.fetchPackage();
 
+        window.location.replace("http://localhost:3000/home");
+
     }
     else{
     console.log("You Clicked No");
@@ -120,34 +125,39 @@ conformDelete(choice){
 
     return (
     <>
+      <h2 style={{textAlign:'center'}}>Packages</h2>
+      <div>
 
-      <div className="container">
-
-           <div className="row">
-
+           <div class="card-columns">
+            
             {packages.map(function(package_item){
              return(
              <>
-            { /*
-              <Col md={{ span: 3 }}>
-                <Card className="card bg-light text-black">
+             
+                <Card   
+                text={'dark'} 
+                className="m-3"
+                style={{height:'18rem', width:'18rem'}}>
+                  <Link to= '/package_details' state= {{
+                   item:package_item
+                   }}>
+                  <Card.Img variant="top" src={'http://127.0.0.1:8000'+package_item.image}/>
                     <Card.Title className="title">{package_item.name}</Card.Title>
-                    <Card.Text>
-                      {package_item.description}
-                    </Card.Text>
                     <div>Price: Rs {package_item.price}</div>
+
+                    </Link>
+
                     <div className="btn-right">
                    <Link to= '/update' state= {{
                    item:package_item
-                   }}> <button type="submit" className="btn-update button" onClick={()=>console.log(package_item.id)}>Update</button></Link>
-                    <button  className="btn-delete button" onClick={()=>self.handleDelete(package_item.id,package_item.name)}>Delete</button>
+                   }}> 
+                   <Button variant="Primary" className="btn-update button" onClick={()=>console.log(package_item.id)}>Update</Button></Link>
+                    <Button variant="secondary" className="btn-delete button" onClick={()=>self.handleDelete(package_item.id,package_item.name)}>Delete</Button>
                     </div>
                 </Card>
-                <br />
-
-              </Col>
-           */}
-            <Link to= '/package_details' state= {{
+           
+           
+            {/*<Link to= '/package_details' state= {{
                    item:package_item
                    }}>
               <div className="packages" >
@@ -164,13 +174,14 @@ conformDelete(choice){
                     </div>
 
               </div>
-              </Link>
+              </Link>*/}
 
 
 
                </>
                   )
                 })}
+               
            </div>
 
 
@@ -178,10 +189,12 @@ conformDelete(choice){
 
       </div>
       <div className="add-icon">
+        <Tooltip title = "add new package" arrow placement="left-start">
     <Fab color="primary" aria-label="add">
             <Link to="/add"><AddIcon style={{color:"white"}}/></Link>
 
             </Fab>
+            </Tooltip>
     </div>
       </>
     );

@@ -1,16 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter,Route,Routes} from 'react-router-dom';
-import './Components/Style.css';
-import AddForm from './Components/AddForm';
-import Navbarcomp from './Components/Navbarcomp';
-import Update from './Components/Update';
-import Package_detail from './Components/Package-detail';
+import './components/Style.css';
+import AddForm from './components/AddForm';
+import Navbarcomp from './components/Navbarcomp';
+import Update from './components/Update';
+import Package_detail from './components/Package-detail';
 import Login from "./admin_login/login";
-import ProtectedRoute from './Components/ProtectedRoute';
+import ProtectedRoute from './components/ProtectedRoute';
 
 
 ReactDOM.render(
