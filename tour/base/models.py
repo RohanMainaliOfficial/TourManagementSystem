@@ -16,3 +16,12 @@ class Packages(models.Model):
     def __str__(self):
         return self.name
 # Create your models here.
+class UserLogin(models.Model):
+    User_id=models.AutoField(primary_key=True)
+    User_name=models.CharField(max_length=70,null=False)
+    password=models.CharField(max_length=13,null=False)
+    Email=models.CharField(max_length=50,null=False)
+    Phone=models.IntegerField(max_length=11,null=False)
+    def __str__(self):
+        return self.User_id;
+
