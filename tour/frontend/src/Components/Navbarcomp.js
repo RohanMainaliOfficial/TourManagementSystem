@@ -125,7 +125,7 @@ conformDelete(choice){
 
     return (
     <>
-      <h2 style={{textAlign:'center'}}>Packages</h2>
+      <h2 style={{textAlign:'center', marginTop:'2%'}}>Packages</h2>
       <div>
 
            <div class="card-columns">
