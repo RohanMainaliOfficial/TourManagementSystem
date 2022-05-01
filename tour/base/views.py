@@ -3,8 +3,9 @@
 
 
 from .models import Packages
+from .models import Package_Days
 from  . import serialize
-from .serialize import PackageSerializer
+from .serialize import PackageSerializer, PackageDaysSerializer
 from rest_framework.decorators import api_view
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -31,7 +32,7 @@ def create_package(request):
 @api_view(['PATCH'])
 def update_package(request,pk):
 
-    Package=Packages.objects.get(id=pk)
+    Package=Packages.objects.get(package_id=pk)
 
     serializeObj=PackageSerializer(instance=Package,data=request.data)
     data={}
@@ -44,9 +45,23 @@ def update_package(request,pk):
 #
 @api_view(['DELETE'])
 def delete_package(request,pk):
-    Package=Packages.objects.get(id=pk)
+    Package=Packages.objects.get(package_id=pk)
     Package.delete()
 
     return Response("Package Deleted Successfully")
 
 #
+
+@api_view(['GET'])
+def package_days_list(request):
+    PackageDayDetail=Package_Days.objects.all()
+    serializeObj=PackageDaysSerializer(PackageDayDetail,many='true')
+    return Response(serializeObj.data)
+
+@api_view(['POST'])
+def create_package_days(request):
+    serializeObj=PackageDaysSerializer(data=request.data)
+    if serializeObj.is_valid():
+        serializeObj.save()
+    return Response(serializeObj.data)
+

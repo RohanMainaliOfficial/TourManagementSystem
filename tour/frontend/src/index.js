@@ -10,6 +10,8 @@ import Navbarcomp from './Components/Navbarcomp';
 import Update from './Components/Update';
 import Package_detail from './Components/Package-detail';
 import Login from "./admin_login/login";
+import AddDays from "./Components/AddDays";
+import AddDaysForm from "./Components/AddDaysForm";
 import ProtectedRoute from './Components/ProtectedRoute';
 
 
@@ -24,6 +26,8 @@ ReactDOM.render(
                     <Route path="/home" element=<ProtectedRoute element={<Navbarcomp/>} />  />
                     <Route path="/add" element=<ProtectedRoute element={<AddForm/>} />  />
                     <Route path="/update" element=<ProtectedRoute element={<Update/>} />  />
+                    <Route path="/add-days" element=<ProtectedRoute element={<AddDays/>} />  />
+                    <Route path="/add-days-form" element=<ProtectedRoute element={<AddDaysForm/>} />  />
                     <Route path="/package_details" element=<ProtectedRoute element={<Package_detail/>} />  />
                 </Routes>
         </BrowserRouter>
