@@ -8,9 +8,9 @@ function Addform(){
 
     const[name,setName]=useState("");
     const[image,setImage]=useState();
-    const[id,setId]=useState();
     const[description,setDescription]=useState("");
     const[price,setPrice]=useState();
+    const[days,setDays]=useState();
     const[category,setCategory]=useState();
     const[seat,setSeat]=useState();
 
@@ -18,9 +18,9 @@ function Addform(){
     const newPackage=()=>{
     const uploadData=new FormData();
     uploadData.append('name',name);
-    uploadData.append('id',id);
     uploadData.append('description',description);
     uploadData.append('price',price);
+    uploadData.append('days',days);
     uploadData.append('seat',seat);
     uploadData.append('category',category);
     uploadData.append('image',image);
@@ -32,7 +32,7 @@ function Addform(){
     .then(response=> response.json())
         .then(data=>console.log(data))
     .catch(error=> console.log(error))
-window.location.replace("http://localhost:3000/home");
+
     }
 
 
@@ -45,18 +45,20 @@ window.location.replace("http://localhost:3000/home");
     Name:
     <input type="text" name="name" value={name}  onChange={(e)=>setName(e.target.value)} />
   </label>
-  <label>
-    ID:
-    <input type="number" name="id" value={id}  onChange={(e)=>setId(e.target.value)}/>
-  </label>
-
 
     <input type="textarea" placeholder="Description" name="description"
      value={description}  onChange={(e)=>setDescription(e.target.value)}/>
 
       <label>
     Price:
-    <input type="number" name="price" value={price}  onChange={(e)=>setPrice(e.target.value)}/>
+    <input type="number" name="price" value={price}  onChange={(e)=>setPrice(e.target.value) }/>
+  </label>
+
+
+
+  <label>
+    Days:
+    <input type="number" name="days" value={days}  onChange={(e)=>setDays(e.target.value)}/>
   </label>
 
     <label>

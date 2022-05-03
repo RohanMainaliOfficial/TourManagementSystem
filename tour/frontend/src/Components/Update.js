@@ -49,7 +49,6 @@ function Update(){
 
     console.log('submitted');
     console.log(image)
-window.location.replace("http://localhost:3000/home");
     }
 
 
