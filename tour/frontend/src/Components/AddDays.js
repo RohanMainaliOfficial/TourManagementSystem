@@ -37,6 +37,22 @@ export default class AddDays extends Component{
 
     }
 
+    handleDelete(id,name){
+
+
+    const url=`http://127.0.0.1:8000/api/delete-package-days/${id}/`;
+           fetch(url,{
+        method: 'DELETE',
+        })
+         .then(response=> response.json())
+            .then(data=>console.log(data))
+        .catch(error=> console.log(error))
+        console.log('submitted');
+        }
+
+
+
+
  render() {
     var packages=this.state.packages
     var activeItem=this.state.activeItem
@@ -61,6 +77,7 @@ export default class AddDays extends Component{
              <Link to= '/add-days-form' state= {{
                    item:package_item
                    }}><button className="add-days-button">Add</button></Link>
+             <button className="delete-package-days-details" onClick={()=>self.handleDelete(package_item.id,package_item.name)}>Delete</button>
              </div>
              </> )
                 })}

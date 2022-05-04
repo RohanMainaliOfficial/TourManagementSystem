@@ -1,17 +1,19 @@
 from rest_framework import serializers
-from .models import Packages
-from .models import Package_Days
+from .models import Packages, PackageDaysDetails
+
 
 class PackageSerializer(serializers.ModelSerializer):
     image = serializers.ImageField(required=False)  #image is not always required because we don't wanna
-                                                    #update image every single time on updating some other data
+                                                  #update image every single time on updating some other data
     class Meta:
         model=Packages
         fields="__all__"
 
-class PackageDaysSerializer(serializers.ModelSerializer):
 
+class PackageDaysSerializer(serializers.ModelSerializer):
+                                                    #update image every single time on updating some other data
     class Meta:
-        model=Package_Days
+        model=PackageDaysDetails
         fields="__all__"
+
 

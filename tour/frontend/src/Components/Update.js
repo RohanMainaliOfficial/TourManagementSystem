@@ -11,6 +11,7 @@ function Update(){
     const location=useLocation();
     const {item}=location.state
     const[name,setName]=useState(item.name);
+    const[days,setDays]=useState(item.days);
     const[image,setImage]=useState();
     const[id,setId]=useState(item.id);
     const[description,setDescription]=useState(item.description);
@@ -32,6 +33,7 @@ function Update(){
         uploadData.append('image',image);
     }
     uploadData.append('id',id);
+    uploadData.append('days',days);
     uploadData.append('description',description);
     uploadData.append('price',price);
     uploadData.append('seat',seat);
@@ -49,7 +51,6 @@ function Update(){
 
     console.log('submitted');
     console.log(image)
-window.location.replace("http://localhost:3000/home");
     }
 
 
@@ -70,12 +71,18 @@ window.location.replace("http://localhost:3000/home");
     <input type="number" name="price"  value={price} onChange={(e)=> setPrice(e.target.value)}/>
   </label>
 
+     <label>
+    Days
+    <input type="number" name="days"  value={days} onChange={(e)=> setDays(e.target.value)}/>
+  </label>
+
     <label>
     Seats:
     <input type="number" name="seat" value={seat} onChange={(e)=> setSeat(e.target.value)}/>
   </label>
   <label for="category">Category: </label>
 <select name="category" id="category" value={category} onChange={(e)=> setCategory(e.target.value)}>
+    <option value="null">Select Category</option>
   <option value="Trekking">Trekking</option>
   <option value="Popular">Popular</option>
   <option value="Long">Long Tour</option>
