@@ -26,7 +26,7 @@ export default class Navbarcomp extends Component {
        activeItem:{
         message:"",
         isLoading:false,
-        id:0,
+        package_id:0,
         check:true,
        },
        editing: false
@@ -56,12 +56,12 @@ export default class Navbarcomp extends Component {
 
 
 //--------------------------Display Confirm Delete message---------------------------------------------------------
-handleDelete(id,name){
+handleDelete(package_id,name){
 this.setState({
             activeItem:{
                  message:`Are you sure you want to delete ${name} Package?`,
                  isLoading:true,
-                 id:id,
+                 package_id:package_id,
                  check:true,
        }
        })
@@ -83,7 +83,7 @@ conformDelete(choice){
                 isLoading:false,
                 check:true,
                 }})
-    const url=`http://127.0.0.1:8000/api/delete-package/${this.state.activeItem.id}/`;
+    const url=`http://127.0.0.1:8000/api/delete-package/${this.state.activeItem.package_id}/`;
            fetch(url,{
         method: 'DELETE',
         })
@@ -91,8 +91,8 @@ conformDelete(choice){
             .then(data=>console.log(data))
         .catch(error=> console.log(error))
         console.log('submitted');
-        this.setState({packages:this.state.packages.map(package_item=>package_item.id!==this.state.activeItem.id)})
-        this.fetchPackage();
+        this.setState({packages:this.state.packages.map(package_item=>package_item.package_id!==this.state.activeItem.package_id)})
+        window.location.replace("http://localhost:3000/home")
 
     }
     else{
@@ -139,32 +139,34 @@ conformDelete(choice){
                     <div className="btn-right">
                    <Link to= '/update' state= {{
                    item:package_item
-                   }}> <button type="submit" className="btn-update button" onClick={()=>console.log(package_item.id)}>Update</button></Link>
-                    <button  className="btn-delete button" onClick={()=>self.handleDelete(package_item.id,package_item.name)}>Delete</button>
+                   }}> <button type="submit" className="btn-update button" onClick={()=>console.log(package_item.package_id)}>Update</button></Link>
+                    <button  className="btn-delete button" onClick={()=>self.handleDelete(package_item.package_id,package_item.name)}>Delete</button>
                     </div>
                 </Card>
                 <br />
 
               </Col>
            */}
-            <Link to= '/package_details' state= {{
+
+              <div className="packages" >
+                <Link to= '/package_details' state= {{
                    item:package_item
                    }}>
-              <div className="packages" >
               <h3 className="package-name">{package_item.name + " Tour Package"}</h3>
+
               <img src={'http://127.0.0.1:8000'+package_item.image} className="package-image"/>
               <h4>{"Rs. "+package_item.price}</h4>
+              </Link>
 
 
               <div className="btn-right">
                    <Link to= '/update' state= {{
                    item:package_item
-                   }}> <button type="submit" className="btn-update button" onClick={()=>console.log(package_item.id)}>Update</button></Link>
-                    <button  className="btn-delete button" onClick={()=>self.handleDelete(package_item.id,package_item.name)}>Delete</button>
+                   }}> <button type="submit" className="btn-update button" onClick={()=>console.log(package_item.package_id)}>Update</button></Link>
+                    <button  className="btn-delete button" onClick={()=>self.handleDelete(package_item.package_id,package_item.name)}>Delete</button>
                     </div>
 
               </div>
-              </Link>
 
 
 
