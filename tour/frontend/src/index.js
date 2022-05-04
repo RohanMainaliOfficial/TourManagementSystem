@@ -7,7 +7,7 @@ import {BrowserRouter,Link,Navigate,Route,Routes} from 'react-router-dom';
 import './Components/Style.css';
 import AddForm from './Components/AddForm';
 import Navbarcomp from './Components/Navbarcomp';
-import Update from './Components/Updat  e';
+import Update from './Components/Update';
 import Package_detail from './Components/Package-detail';
 import Login from "./admin_login/login";
 import ProtectedRoute from './Components/ProtectedRoute';
