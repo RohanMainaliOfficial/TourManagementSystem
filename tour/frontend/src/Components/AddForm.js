@@ -67,6 +67,7 @@ function Addform(){
   </label>
   <label for="category">Category: </label>
 <select name="category" id="category"  onChange={(e)=>setCategory(e.target.value)}>
+  <option value="null">Select Category</option>
   <option value="Trekking">Trekking</option>
   <option value="Popular">Popular</option>
   <option value="Long">Long Tour</option>

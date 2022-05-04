@@ -6,6 +6,7 @@ import AddForm from './AddForm';
 import Update from './Update';
 import AddDays from './AddDays';
 import AddDaysForm from './AddDaysForm';
+import Dashboard from './Dashboard';
 import Package_detail from './Package-detail';
 
 function ProtectedRoute({element:Component,...rest}){
@@ -21,6 +22,9 @@ localStorage.clear();
 }
 else if(Component.type.name==="Addform"){
 return <AddForm/>
+}
+else if(Component.type.name==="Dashboard"){
+return <Dashboard/>
 }
 else if(Component.type.name==="Update"){
 return <Update/>

@@ -7,6 +7,7 @@ import AddIcon from "@mui/icons-material/Add";
 import Style from './Style.css';
 import AddForm from './AddForm';
 import Dialogue from './Dialogue';
+import AdminNavbar from './AdminNavbar';
 import Update from './Update';
 import {Link} from 'react-router-dom';
 import {Modal} from 'react-modal';
@@ -119,10 +120,12 @@ conformDelete(choice){
 
     return (
     <>
+    <AdminNavbar/>
+    <h1 className="AdminTitle">Tour Packages</h1>
 
       <div className="container">
 
-           <div className="row">
+           <div className="container-row">
 
             {packages.map(function(package_item){
              return(
@@ -154,7 +157,7 @@ conformDelete(choice){
               <h3 className="package-name">{package_item.name + " Tour Package"}</h3>
 
               <img src={'http://127.0.0.1:8000'+package_item.image} className="package-image"/>
-              <h4>{"Rs. "+package_item.price}</h4>
+              <h6>{"Rs. "+package_item.price}</h6>
               </Link>
 
 

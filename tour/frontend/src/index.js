@@ -12,6 +12,7 @@ import Package_detail from './Components/Package-detail';
 import Login from "./admin_login/login";
 import AddDays from "./Components/AddDays";
 import AddDaysForm from "./Components/AddDaysForm";
+import Dashboard from "./Components/Dashboard";
 import ProtectedRoute from './Components/ProtectedRoute';
 
 
@@ -26,6 +27,7 @@ ReactDOM.render(
                     <Route path="/home" element=<ProtectedRoute element={<Navbarcomp/>} />  />
                     <Route path="/add" element=<ProtectedRoute element={<AddForm/>} />  />
                     <Route path="/update" element=<ProtectedRoute element={<Update/>} />  />
+                    <Route path="/user" element=<ProtectedRoute element={<Dashboard/>} />  />
                     <Route path="/add-days" element=<ProtectedRoute element={<AddDays/>} />  />
                     <Route path="/add-days-form" element=<ProtectedRoute element={<AddDaysForm/>} />  />
                     <Route path="/package_details" element=<ProtectedRoute element={<Package_detail/>} />  />

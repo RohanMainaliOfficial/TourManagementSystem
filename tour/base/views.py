@@ -51,7 +51,7 @@ def create_package_days(request):
 @api_view(['PATCH'])
 def update_package(request,pk):
 
-    Package=Packages.objects.get(package_id=pk)
+    Package=Packages.objects.get(id=pk)
 
     serializeObj=PackageSerializer(instance=Package,data=request.data)
     data={}
