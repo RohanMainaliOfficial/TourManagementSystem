@@ -2,6 +2,7 @@ import React from 'react';
 import {useLocation} from 'react-router-dom';
 import {package_item} from './Navbarcomp'
 import './Booking.css';
+import Navbar from './Navbar'
 var today=new Date();
 
 function Booking_info(){
@@ -28,6 +29,7 @@ return(
 
         </div>
     </div> */}
+    <Navbar/>
 <div className="Booking_Form" id="Booking_Form">
     <div className="personal_info">
         <div >        <h1 className='packageName'>package Name</h1></div>

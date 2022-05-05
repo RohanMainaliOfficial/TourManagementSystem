@@ -6,7 +6,12 @@ import './ViewPackage.css';
 function Package_detail(){
 
 const location=useLocation();
-const {item}=location.state
+const {item}=location.state;
+
+console.log({item});
+fetch('http://127.0.0.1:8000/api/package-days/'+item.id)
+        .then(response=>response.json())
+        .then(data=>console.log(data))
 
 return(
 
