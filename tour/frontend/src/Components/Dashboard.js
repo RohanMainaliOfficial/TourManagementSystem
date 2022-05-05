@@ -102,6 +102,32 @@ export default class Dashboard extends Component {
              )})}
              </div>
 
+              <div className={UserStyle.popularPackage}>
+             <h1 className={UserStyle.packageCategoryTitle}>Long Tour Packages</h1>
+
+            {packages.map(function(package_item){
+            if(package_item.category==="Long")
+             return(
+             <>
+            <h1> {package_item.name}</h1>
+             </>
+
+             )})}
+             </div>
+
+             <div className={UserStyle.popularPackage}>
+             <h1 className={UserStyle.packageCategoryTitle}>Short Tour Packages</h1>
+
+            {packages.map(function(package_item){
+            if(package_item.category==="Short")
+             return(
+             <>
+            <h1> {package_item.name}</h1>
+             </>
+
+             )})}
+             </div>
+
 
         <section className={UserStyle.packages}>
         <h6>Montana is a western state defined by its diverse terrain ranging from the Rocky Mountains to the Great Plains. Its wide-open spaces include Glacier National Park, a vast wilderness preserve that passes into Canada. The park’s many snow-capped peaks, lakes and alpine hiking trails are showcased along its famed Going-to-the-Sun Road, stretching 50 miles.
