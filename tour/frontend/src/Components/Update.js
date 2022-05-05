@@ -3,6 +3,8 @@ import React,{ useState } from 'react';
 import {useLocation} from 'react-router-dom';
 import {package_item} from './Navbarcomp'
 import './form.css'
+import { Form, Button } from "react-bootstrap";
+
 
     let editImage=0;
 
@@ -58,48 +60,97 @@ function Update(){
 
     return(
             <div className="container">
- <form className="form" >
-  <label>
-    Name:
-    <input type="text" name="name" value={name} onChange={(e)=> setName(e.target.value)}/>
-  </label>
+ <Form>
+        <div className="form-group">
+          <label>Package Name:</label>
+          <input
+            type="text"
+            class="form-control"
+            name="name"
+            value={name}
+            placeholder="Package Name"
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
 
-    <input type="textarea" placeholder="Description" name="description" value={description} onChange={(e)=> setDescription(e.target.value)}/>
+        <div className="form-group">
+          <label>Description: </label>
+          <textarea
+            class="form-control"
+            rows="4"
+            name="description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          ></textarea>
+          </div>
 
-      <label>
-    Price:
-    <input type="number" name="price"  value={price} onChange={(e)=> setPrice(e.target.value)}/>
-  </label>
-
-     <label>
-    Days
-    <input type="number" name="days"  value={days} onChange={(e)=> setDays(e.target.value)}/>
-  </label>
-
-    <label>
-    Seats:
-    <input type="number" name="seat" value={seat} onChange={(e)=> setSeat(e.target.value)}/>
-  </label>
-  <label for="category">Category: </label>
-<select name="category" id="category" value={category} onChange={(e)=> setCategory(e.target.value)}>
-    <option value="null">Select Category</option>
-  <option value="Trekking">Trekking</option>
-  <option value="Popular">Popular</option>
-  <option value="Long">Long Tour</option>
-  <option value="Short">Short</option>
-</select>
-
-<input type="file"  onChange={(e)=> {
-               editImage++;
-               setImage(e.target.files[0])
-
-}
-
-}/>
+          <div class="row-md-6">
+            <div class="col">
+          <label>
+            Price:
+            <input
+              type="number"
+              class="form-control"
+              name="price"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+            />
+          </label>
+          </div>
 
 
-</form>
-<button onClick={submitHandler} >Update</button>
+
+          <div class="col">
+          <label>
+            Seats:
+            <input
+              type="number"
+              class="form-control"
+              name="seat"
+              value={seat}
+              onChange={(e) => setSeat(e.target.value)}
+            />
+          </label>
+          </div>
+
+           <div class="col">
+          <label>
+            Days:
+            <input
+              type="number"
+              class="form-control"
+              name="days"
+              value={days}
+              onChange={(e) => setDays(e.target.value)}
+            />
+          </label>
+          </div>
+        </div>
+        <div className="end">
+          <label for="exampleFormControlSelect1">Category: </label>
+          <select
+            class="form-control"
+            name="category"
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            <option value="">Package Type</option>
+            <option value="Trekking">Trekking</option>
+            <option value="Popular">Popular</option>
+            <option value="Long">Long Tour</option>
+            <option value="Short">Short</option>
+          </select>
+          <br></br>
+
+          <label>Select image file of the destination :</label>
+          <br></br>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e) => setImage(e.target.files[0])}
+          />
+        </div>
+      </Form>
+      <Button onClick={() => submitHandler()}>Submit</Button>
             </div>
 
     );
