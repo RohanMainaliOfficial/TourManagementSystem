@@ -59,11 +59,13 @@ export default class Dashboard extends Component {
 
         <div className={UserStyle.container}>
           <header className={UserStyle.video_header} >
+               <Navbar/>
 
-           <Navbar/>
 
 
-          <div className={UserStyle.Title}>
+<video className={UserStyle.video}src="http://127.0.0.1:8000/media/posts/video.mp4" autoplay="autoplay" loop="loop"
+         playsinline="playsinline" muted="muted"></video>
+<div className={UserStyle.Title}>
             <h1 className={UserStyle.firstLine}>
               We Provide
               <span> BEST
@@ -73,7 +75,9 @@ export default class Dashboard extends Component {
             </h1>
 
             <button className={UserStyle.bookBtn}>Book Now!</button>
+
             </div>
+
 
         </header>
          <div className={UserStyle.popularPackage}>
