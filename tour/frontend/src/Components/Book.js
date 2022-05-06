@@ -40,11 +40,11 @@ return(
 
         <div>
         <label>Full Name</label>
-       <input type="text" id="name"  className="a" placeholder="Your full name"  required pattern="[A-Za-z]*"></input>
+       <input type="text" id="name"  className="a" placeholder="Your full name"  required pattern="[A-Za-z]* [A-Za-z]*|[A-Za-z]* [A-Za-z]* [A-Za-z]*"></input>
        </div>
         <div>
         <label>Email</label>
-        <input type="email" id="email" className="a" placeholder="a@gmailcom" pattern=".+@gmail.com"required ></input>
+        <input type="email" id="email" className="a" placeholder="a@gmailcom"required ></input>
         <span></span>
         </div>
         <section className='Contact'>
