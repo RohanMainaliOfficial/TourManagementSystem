@@ -33,14 +33,14 @@ return(
         <div className='Package_name'>
             <h2>{item.name+" Tour Package"}</h2>
         </div>
-        <img src={"http://127.0.0.1:8000"+item.image }className="package-img" height="375px"/>
+        <img src={"http://127.0.0.1:8000"+item.image }className="package-img"/>
     </div>
 <section className='description_section'> 
 
     <div className='package_description_container'>
     <div className='Short_descrpition'>
-        <h2>About The Tour</h2>
-        <p>
+        <h2 className='About'>About The Tour</h2>
+        <p className='description'>
             {item.description}
         </p>
     </div>

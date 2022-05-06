@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styles from "./styles.css";
 import { Form, Button } from "react-bootstrap";
-import auth from "E:/TourManagementSystem/tour/frontend/src/components/Login.js";
+import auth from "C:/Users/user/Desktop/TourManagementSystem/tour/frontend/src/Components/Login.js";
 
 
 
