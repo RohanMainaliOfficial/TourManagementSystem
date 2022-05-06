@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import UserStyle from './Dashboard.module.css';
 import Navbar from "./Navbar";
+import './card_view.css'
 
 export default class Dashboard extends Component {
 
@@ -81,66 +83,132 @@ export default class Dashboard extends Component {
 
         </header>
          <div className={UserStyle.popularPackage}>
-         <h1 className={UserStyle.packageCategoryTitle}>Popular Packages</h1>
+         <h1 class="packageCategoryTitle">Popular Packages</h1>
+
+         <div class="popularPackagesList">
+
 
             {packages.map(function(package_item){
             if(package_item.category==="Popular")
              return(
-             <>
-            <h1> {package_item.name}</h1>
-             </>
+
+
+                  <div class="column">
+                    <div class="wsk-cp-product">
+                      <div class="wsk-cp-img">
+                        <img src={'http://127.0.0.1:8000'+package_item.image} />
+                      </div>
+                      <div class="wsk-cp-text">
+
+                        <div class="title-product">
+                          <h2 class="titleProduct">{package_item.name}</h2>
+                        </div>
+
+                        <div class="card-footer">
+                          <div class="wcf-left"><span class="price">Rs. {package_item.price}</span></div>
+
+                        </div>
+                      </div>
+                </div>
+              </div>
 
              )})}
              </div>
+             </div>
+
 
              <div className={UserStyle.popularPackage}>
-             <h1 className={UserStyle.packageCategoryTitle}>Trekking Packages</h1>
-
+             <h1 class="packageCategoryTitle">Trekking Packages</h1>
+                <div class="popularPackagesList">
             {packages.map(function(package_item){
             if(package_item.category==="Trekking")
              return(
-             <>
-            <h1> {package_item.name}</h1>
-             </>
+              <div class="column">
+                    <div class="wsk-cp-product">
+                      <div class="wsk-cp-img">
+                        <img src={'http://127.0.0.1:8000'+package_item.image} />
+                      </div>
+                      <div class="wsk-cp-text">
+
+                        <div class="title-product">
+                          <h2 class="titleProduct">{package_item.name }</h2>
+                        </div>
+
+                        <div class="card-footer">
+                          <div class="wcf-left"><span class="price">Rp500.000</span></div>
+
+                        </div>
+                      </div>
+                </div>
+              </div>
 
              )})}
-             </div>
+           </div>
+           </div>
 
-              <div className={UserStyle.popularPackage}>
-             <h1 className={UserStyle.packageCategoryTitle}>Long Tour Packages</h1>
+           <div className={UserStyle.popularPackage}>
+           <h1 class="packageCategoryTitle">Long Tour Packages</h1>
 
+           <div class="popularPackagesList">
             {packages.map(function(package_item){
             if(package_item.category==="Long")
              return(
-             <>
-            <h1> {package_item.name}</h1>
-             </>
+              <div class="column">
+                    <div class="wsk-cp-product">
+                      <div class="wsk-cp-img">
+                        <img src={'http://127.0.0.1:8000'+package_item.image} />
+                      </div>
+                      <div class="wsk-cp-text">
+
+                        <div class="title-product">
+                          <h2 class="titleProduct">{package_item.name }</h2>
+                        </div>
+
+                        <div class="card-footer">
+                          <div class="wcf-left"><span class="price">Rp500.000</span></div>
+
+                        </div>
+                      </div>
+                </div>
+              </div>
 
              )})}
-             </div>
+           </div>
+           </div>
 
-             <div className={UserStyle.popularPackage}>
-             <h1 className={UserStyle.packageCategoryTitle}>Short Tour Packages</h1>
 
+              <div className={UserStyle.popularPackage}>
+           <h1 class="packageCategoryTitle">Short Tour Packages</h1>
+
+           <div class="popularPackagesList">
             {packages.map(function(package_item){
             if(package_item.category==="Short")
              return(
-             <>
-            <h1> {package_item.name}</h1>
-             </>
+              <div class="column">
+                    <div class="wsk-cp-product">
+                      <div class="wsk-cp-img">
+                        <img src={'http://127.0.0.1:8000'+package_item.image} />
+                      </div>
+                      <div class="wsk-cp-text">
+
+                        <div class="title-product">
+                          <h2 class="titleProduct">{package_item.name }</h2>
+                        </div>
+
+                        <div class="card-footer">
+                          <div class="wcf-left"><span class="price">Rp500.000</span></div>
+
+                        </div>
+                      </div>
+                </div>
+              </div>
 
              )})}
-             </div>
+           </div>
+           </div>
 
 
-        <section className={UserStyle.packages}>
-        <h6>Montana is a western state defined by its diverse terrain ranging from the Rocky Mountains to the Great Plains. Its wide-open spaces include Glacier National Park, a vast wilderness preserve that passes into Canada. The park’s many snow-capped peaks, lakes and alpine hiking trails are showcased along its famed Going-to-the-Sun Road, stretching 50 miles.
 
-Montana State University is ranked in the top tier of U.S. research institutions by the Carnegie Foundation for the Advancement of Teaching. Located in Bozeman Montana, Montana State is an accredited land grant university offering bachelor's, master's and doctoral degrees in 150 fields of study.
-Maybe it's the independent frontier spirit, wild and free and oh-so-American, that earned Montana its 'live and let live' state motto. The sky seems bigger and bluer. The air is crisp and pine-scented. From mountains that drop into undulating ranchlands to brick brewhouses and the shaggy grizzly found lapping at an ice-blue glacier lake, Montana brings you to that euphoric place, naturally.
-And then it remains with you long after you've left its beautiful spaces behind
-</h6>
-</section>
 
         </div>
 
@@ -148,3 +216,6 @@ And then it remains with you long after you've left its beautiful spaces behind
     );
   }
 }
+
+
+

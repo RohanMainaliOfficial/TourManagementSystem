@@ -169,3 +169,12 @@ margin-top:3%;
 letter-spacing: 1.2px;
 font-size:32px
 }
+
+.packageCategoryTitle{
+
+padding: 2%;
+margin-right:3%;
+margin:auto;
+font-family:'poppins','sans-serif';
+color:#40525c;
+}
