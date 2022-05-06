@@ -1,6 +1,6 @@
 import React from 'react';
 import {useLocation} from 'react-router-dom';
-import {package_item} from './Navbarcomp'
+import {package_item} from './Navbarcomp';
 import './ViewPackage.css';
 import Book from './Book';
 import {Link} from 'react-router-dom';
@@ -93,10 +93,10 @@ return(
         <div className="details">
         <h3>{item.name}</h3>
         <p>{item.description}</p>
-        <h5>{"Price "+item.price}</h5>
-        <h5>{"Seats "+item.seat}</h5>
-        <h5>{"Category "+item.category}</h5>
-        <h5>{"id "+item.id}</h5>
+        <h5>{"Price: "+item.price}</h5>
+        <h5>{"Seats: "+item.seat}</h5>
+        <h5>{"Category: "+item.category}</h5>
+        <h5>{"id: "+item.id}</h5>
         </div>
         <Link to="/Book"state={{Data:item}}
                 >clickme</Link>

@@ -30,8 +30,6 @@ INSTALLED_APPS = [
     'tour',
     'rest_framework',
     'corsheaders',
-
-
 ]
 
 MIDDLEWARE = [
