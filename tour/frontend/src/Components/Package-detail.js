@@ -33,7 +33,7 @@ return(
         <div className='Package_name'>
             <h2>{item.name+" Tour Package"}</h2>
         </div>
-        <img src={"http://127.0.0.1:8000"+item.image }className="package-img" height="375px"/>
+        <img src={"http://127.0.0.1:8000"+item.image }className="package-img" height="375px" />
     </div>
 <section className='description_section'> 
 

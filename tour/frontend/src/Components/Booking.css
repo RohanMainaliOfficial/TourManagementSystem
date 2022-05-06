@@ -34,16 +34,14 @@ section,.Booking_details{
         display: -ms-flexbox;
         display: flex;
         padding: 2px;
+        justify-content: space-between;
 }
 
 
 
-.secondary_number,.number{
-margin-left: 5%;
-}
 
 .number {
-    margin-left: 23%;
+    
     width: 350px;
 }
 .packageName{
