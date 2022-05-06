@@ -8,6 +8,10 @@ var today=new Date();
 function Booking_info(){
 
 
+const location=useLocation();
+console.log(location);
+localStorage.removeItem("name");
+
 
 return(
 
@@ -32,7 +36,7 @@ return(
     <Navbar/>
 <div className="Booking_Form" id="Booking_Form">
     <div className="personal_info">
-        <div >        <h1 className='packageName'>package Name</h1></div>
+        <div >        <h1 className='packageName'>{location.state.Data.name+" Tour Package"}</h1></div>
 
         <div>
         <label>Full Name</label>
@@ -40,17 +44,17 @@ return(
        </div>
         <div>
         <label>Email</label>
-        <input type="email" id="email" className="a"pattern=".+@gmail.com"required ></input>
-        
+        <input type="email" id="email" className="a" placeholder="a@gmailcom" pattern=".+@gmail.com"required ></input>
+        <span></span>
         </div>
         <section className='Contact'>
             <div>
         <label>Phone</label>
-        <input type="text" id="phone" min="0"className="a" pattern="[0-9]*" required></input>
+        <input type="text" id="phone" placeholder="9524217638" min="0"className="a" pattern="[9]+[0-9]*" required></input>
       </div>
       <div className='secondary_number'>
         <label>Secondary Number  </label>
-        <input type="text" id="secondary_Phone"  min="0"className="a" required pattern="[0-9]{10}"></input>
+        <input type="text" id="secondary_Phone" placeholder="9524217638"  min="0"className="a" required pattern="[0-9]{10}"></input>
       
         </div>
         </section>
@@ -63,7 +67,7 @@ return(
         </div>
         <div className="number">
             <label>Number of people</label>
-            <input type="text" className="a"required></input>
+            <input type="number" min="1" max={location.state.Data.seat} placeholder="Number Of People" className="a"required></input>
             
         </div>
         

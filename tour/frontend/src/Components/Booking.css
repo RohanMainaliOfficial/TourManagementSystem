@@ -1,7 +1,7 @@
 
 .Booking_Form{
-background-color: rgba(0, 0,0,0.2);
-width: 100%;
+
+width: 50%;
 
     max-width: 1220px;
     margin: 0 auto;
@@ -11,6 +11,7 @@ width: 100%;
 .Booking_Form div div{
     display: flex;
     flex-direction: column;
+    padding: 2px;
 
 }
 input{
@@ -29,23 +30,21 @@ input{
     height:40px;
 }
 section,.Booking_details{
-        flex-wrap: wrap;
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
+        padding: 2px;
 }
 
 
-input:valid::after input{
-  
-    border: 1px solid red;
-}
+
 .secondary_number,.number{
-margin-left: 9.5%;
+margin-left: 5%;
 }
 
 .number {
-    margin-left: 25%;
+    margin-left: 23%;
+    width: 350px;
 }
 .packageName{
     text-align: center;
@@ -66,4 +65,16 @@ input[type="button"]{
 
     display: flex;
     flex-direction: row;
+    padding-bottom:2%;
+}
+
+input:not(:placeholder-shown):not(:focus):invalid {
+  border: 2px solid red;
+}
+input[type="button"] {
+    opacity: 1;
+}
+
+input:not(:placeholder-shown):valid::after input[type="button"]{
+    content:"hello";
 }

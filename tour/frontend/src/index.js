@@ -24,6 +24,7 @@ ReactDOM.render(
         <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Login/>} />
+                    <Route path="/Book" element={<Booking_info/>} />
                     <Route path="/home" element=<ProtectedRoute element={<Navbarcomp/>} />  />
                     <Route path="/add" element=<ProtectedRoute element={<AddForm/>} />  />
                     <Route path="/update" element=<ProtectedRoute element={<Update/>} />  />
