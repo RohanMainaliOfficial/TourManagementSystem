@@ -30,13 +30,10 @@ width: 350px;
   }
   .wsk-cp-img img{
     width:100%;
-    transition: all 0.2s ease-in-out;
     border-radius:6px;
   }
-  .wsk-cp-product:hover .wsk-cp-img{
-    top:-40px;
-  }
-  .wsk-cp-product:hover .wsk-cp-img img{
+
+  .wsk-cp-product:hover {
     box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
   }
   .wsk-cp-text{
@@ -130,5 +127,33 @@ font-family:poppins,'sans-serif';
 }
 
 .column{
-max-width:375px
+max-width:375px;
+cursor: pointer;
+transition: all 0.2s ease-in-out;
+
+
+}
+
+.column:hover{
+transform:scale(1.05);
+}
+
+
+.discountLabel{
+       float: left;
+       position: absolute;
+       left: 0px;
+       top: 0px;
+       z-index: 1000;
+       background-color: #DF4C1F;
+       padding: 5px;
+       color: #FFFFFF;
+       font-family: poppins;
+       font-weight: bold;
+
+
+}
+
+html{
+  scroll-behavior: 'smooth';
 }

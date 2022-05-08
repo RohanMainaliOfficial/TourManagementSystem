@@ -46,6 +46,9 @@ export default function Navbar() {
           <li>
             <a href="/add-days">AddDetails</a>
           </li>
+          <li>
+            <a href="/add-discount">AddDiscount</a>
+          </li>
         </ul>
       </div>
     </nav>

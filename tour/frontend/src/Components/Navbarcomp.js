@@ -130,25 +130,6 @@ conformDelete(choice){
             {packages.map(function(package_item){
              return(
              <>
-            { /*
-              <Col md={{ span: 3 }}>
-                <Card className="card bg-light text-black">
-                    <Card.Title className="title">{package_item.name}</Card.Title>
-                    <Card.Text>
-                      {package_item.description}
-                    </Card.Text>
-                    <div>Price: Rs {package_item.price}</div>
-                    <div className="btn-right">
-                   <Link to= '/update' state= {{
-                   item:package_item
-                   }}> <button type="submit" className="btn-update button" onClick={()=>console.log(package_item.id)}>Update</button></Link>
-                    <button  className="btn-delete button" onClick={()=>self.handleDelete(package_item.id,package_item.name)}>Delete</button>
-                    </div>
-                </Card>
-                <br />
-
-              </Col>
-           */}
 
               <div className="packages" >
                 <Link to= '/package_details' state= {{
@@ -169,9 +150,6 @@ conformDelete(choice){
                     </div>
 
               </div>
-
-
-
                </>
                   )
                 })}

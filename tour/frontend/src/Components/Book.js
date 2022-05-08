@@ -3,6 +3,9 @@ import {useLocation} from 'react-router-dom';
 import {package_item} from './Navbarcomp'
 import './Booking.css';
 import Navbar from './Navbar'
+import { ToastContainer, toast } from 'react-toastify';
+ import 'react-toastify/dist/ReactToastify.css';
+
 var today=new Date();
 
 function Booking_info(){
@@ -52,7 +55,10 @@ localStorage.removeItem("name");
  }
 
 
+const notify=()=>{
+toast("Booking Successful");
 
+}
 
 const handleSubmit=()=>{
 
@@ -91,7 +97,16 @@ const handleSubmit=()=>{
 setTimeout(() => {
   {updateSeat()};
     console.log('This will run after 1 second!')
+    {notify()};
+
+
   }, 1000);
+      setTimeout(() => {
+    console.log('This will run after 200 second!')
+    window.location.replace('http://localhost:3000/home');
+
+  }, 1500);
+
 
 
 
@@ -166,7 +181,18 @@ return(
 </div>
 <div>
       <button onClick={() => handleSubmit()}>Book</button>
+      <ToastContainer
+      position="top-center"
+        autoClose={500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover/>
     </div>
+
 
 
 

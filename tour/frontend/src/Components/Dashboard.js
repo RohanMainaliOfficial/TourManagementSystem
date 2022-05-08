@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import UserStyle from './Dashboard.module.css';
 import Navbar from "./Navbar";
+import Footer from "./footer";
 import './card_view.css'
 
 export default class Dashboard extends Component {
@@ -76,25 +77,28 @@ export default class Dashboard extends Component {
             <h1 className={UserStyle.secondLine}>Tour Packages all over Nepal
             </h1>
 
+            <a href="#packages">
             <button className={UserStyle.bookBtn}>Book Now!</button>
+            </a>
 
             </div>
 
 
         </header>
          <div className={UserStyle.popularPackage}>
-         <h1 class="packageCategoryTitle">Popular Packages</h1>
+         <h1 id="packages" class="packageCategoryTitle">Popular Packages</h1>
 
          <div class="popularPackagesList">
 
 
             {packages.map(function(package_item){
-            if(package_item.category==="Popular")
+            if(package_item.category==="Popular" && package_item.discount===0){
              return(
 
 
                   <div class="column">
                     <div class="wsk-cp-product">
+
                       <div class="wsk-cp-img">
                         <img src={'http://127.0.0.1:8000'+package_item.image} />
                       </div>
@@ -112,7 +116,39 @@ export default class Dashboard extends Component {
                 </div>
               </div>
 
-             )})}
+             )}
+
+              if(package_item.category==="Popular" && package_item.discount!==0){
+             return(
+
+
+                  <div class="column">
+                    <div class="wsk-cp-product">
+                    <div id="discountTag">
+                    <div className="discountLabel">{package_item.discount}% OFF</div>
+                    </div>
+                      <div class="wsk-cp-img">
+                        <img src={'http://127.0.0.1:8000'+package_item.image} />
+                      </div>
+                      <div class="wsk-cp-text">
+
+                        <div class="title-product">
+                          <h2 class="titleProduct">{package_item.name}</h2>
+                        </div>
+
+                        <div class="card-footer">
+                          <div class="wcf-left"><span class="price"><del>Rs. {package_item.price}</del> Rs. {package_item.price -(package_item.price* package_item.discount)/100}</span></div>
+
+                        </div>
+                      </div>
+                </div>
+              </div>
+
+             )
+
+             }
+
+             })}
              </div>
              </div>
 
@@ -121,7 +157,7 @@ export default class Dashboard extends Component {
              <h1 class="packageCategoryTitle">Trekking Packages</h1>
                 <div class="popularPackagesList">
             {packages.map(function(package_item){
-            if(package_item.category==="Trekking")
+            if(package_item.category==="Trekking" && package_item.discount===0){
              return(
               <div class="column">
                     <div class="wsk-cp-product">
@@ -135,14 +171,45 @@ export default class Dashboard extends Component {
                         </div>
 
                         <div class="card-footer">
-                          <div class="wcf-left"><span class="price">Rp500.000</span></div>
+                          <div class="wcf-left"><span class="price">Rs. {package_item.price}</span></div>
 
                         </div>
                       </div>
                 </div>
               </div>
 
-             )})}
+             )}
+             if(package_item.category==="Trekking" && package_item.discount!==0){
+             return(
+
+
+                  <div class="column">
+                    <div class="wsk-cp-product">
+                    <div id="discountTag">
+                    <div className="discountLabel">{package_item.discount}% OFF</div>
+                    </div>
+                      <div class="wsk-cp-img">
+                        <img src={'http://127.0.0.1:8000'+package_item.image} />
+                      </div>
+                      <div class="wsk-cp-text">
+
+                        <div class="title-product">
+                          <h2 class="titleProduct">{package_item.name}</h2>
+                        </div>
+
+                        <div class="card-footer">
+                          <div class="wcf-left"><span class="price"><del>Rs. {package_item.price}</del> Rs. {package_item.price -(package_item.price* package_item.discount)/100}</span></div>
+
+                        </div>
+                      </div>
+                </div>
+              </div>
+
+             )
+
+             }
+
+             })}
            </div>
            </div>
 
@@ -151,7 +218,7 @@ export default class Dashboard extends Component {
 
            <div class="popularPackagesList">
             {packages.map(function(package_item){
-            if(package_item.category==="Long")
+            if(package_item.category==="Long" && package_item.discount===0)
              return(
               <div class="column">
                     <div class="wsk-cp-product">
@@ -165,14 +232,46 @@ export default class Dashboard extends Component {
                         </div>
 
                         <div class="card-footer">
-                          <div class="wcf-left"><span class="price">Rp500.000</span></div>
+                          <div class="wcf-left"><span class="price">Rs. {package_item.price}</span></div>
 
                         </div>
                       </div>
                 </div>
               </div>
 
-             )})}
+             )
+
+              if(package_item.category==="Long" && package_item.discount!==0){
+             return(
+
+
+                  <div class="column">
+                    <div class="wsk-cp-product">
+                    <div id="discountTag">
+                    <div className="discountLabel">{package_item.discount}% OFF</div>
+                    </div>
+                      <div class="wsk-cp-img">
+                        <img src={'http://127.0.0.1:8000'+package_item.image} />
+                      </div>
+                      <div class="wsk-cp-text">
+
+                        <div class="title-product">
+                          <h2 class="titleProduct">{package_item.name}</h2>
+                        </div>
+
+                        <div class="card-footer">
+                          <div class="wcf-left"><span class="price"><del>Rs. {package_item.price}</del> Rs. {package_item.price -(package_item.price* package_item.discount)/100}</span></div>
+
+                        </div>
+                      </div>
+                </div>
+              </div>
+
+             )
+
+             }
+
+             })}
            </div>
            </div>
 
@@ -182,7 +281,7 @@ export default class Dashboard extends Component {
 
            <div class="popularPackagesList">
             {packages.map(function(package_item){
-            if(package_item.category==="Short")
+            if(package_item.category==="Short" && package_item.discount===0)
              return(
               <div class="column">
                     <div class="wsk-cp-product">
@@ -203,12 +302,50 @@ export default class Dashboard extends Component {
                 </div>
               </div>
 
-             )})}
+             )
+             if(package_item.category==="Short" && package_item.discount!==0){
+             return(
+
+
+                  <div class="column">
+                    <div class="wsk-cp-product">
+                    <div id="discountTag">
+                    <div className="discountLabel">{package_item.discount}% OFF</div>
+                    </div>
+                      <div class="wsk-cp-img">
+                        <img src={'http://127.0.0.1:8000'+package_item.image} />
+                      </div>
+                      <div class="wsk-cp-text">
+
+                        <div class="title-product">
+                          <h2 class="titleProduct">{package_item.name}</h2>
+                        </div>
+
+                        <div class="card-footer">
+                          <div class="wcf-left"><span class="price"><del>Rs. {package_item.price}</del> Rs. {package_item.price -(package_item.price* package_item.discount)/100}</span></div>
+
+                        </div>
+                      </div>
+                </div>
+              </div>
+
+             )
+
+             }
+
+
+             })}
            </div>
+
            </div>
 
 
 
+
+
+        </div>
+        <div>
+                 <Footer/>
 
         </div>
 

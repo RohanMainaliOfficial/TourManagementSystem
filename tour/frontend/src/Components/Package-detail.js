@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{ useState, useEffect }from 'react';
 import {useLocation} from 'react-router-dom';
 import {package_item} from './Navbarcomp'
 import './ViewPackage.css';
@@ -13,16 +13,30 @@ import Navbar from './Navbar'
 
 
 function Package_detail(){
-
-
-
 const location=useLocation();
 const {item}=location.state;
-  fetch('http://127.0.0.1:8000/api/package-days/'+item.id+'/')
-        .then(response=>response.json()).then(data=>localStorage.setItem("days_data",data))
-const days_data=localStorage.getItem("days_data")
-localStorage.removeItem("days_data");
-console.log(item);
+const url=
+'http://127.0.0.1:8000/api/package-days/'+item.id+'/';
+
+ const [daysdata, setValue]=useState({});
+const fetchdata=()=>{
+fetch(url).then(function(response){return response.json()})
+.then(function(data){
+setValue(data);
+
+})}
+useEffect(() => {
+ fetchdata()
+ })
+
+
+//  fetch(url).then(function(response){return response.json()})
+// .then(function(data){
+//     this.state.packages=data;
+//     console.log(state);
+// })
+// console.log(state.packages)
+
 return(
 
 <>
@@ -30,11 +44,10 @@ return(
 <div className='pacakage_details_container'>
 
     <div className="imgContainer">
-
         <div className='Package_name'>
             <h2>{item.name+" Tour Package"}</h2>
         </div>
-        <img src={"http://127.0.0.1:8000"+item.image }className="package-img" height="375px"/>
+        <img src={"http://127.0.0.1:8000"+item.image }className="package-img" height="375px" />
     </div>
 <section className='description_section'>
 
@@ -81,9 +94,33 @@ return(
                 ><button className=''>Book the trip</button></Link>
 </div>
 </section>
+<section>
+    <div>
+
+    </div>
+</section>
+ {
+
+
+ Object.keys(daysdata).map(element => {
+
+    return(
+        <>
+        <script></script>
+        <div className="Days_details_Container">
+                <div>
+                    <h5 className="days_details_header" id ="myHeader">Day {daysdata[element].day_count}</h5>
+                </div>
+                <div>
+                    <p>{daysdata[element].day_description}</p>
+                </div>
+        </div>
+        </>
+    )
+
+})}
 
 </div>
-
 
 
     {/* <div class="package_details_container">
