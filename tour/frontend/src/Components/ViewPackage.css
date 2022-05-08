@@ -124,3 +124,6 @@ serif;
 .package_description_container{
 width:340%;
 }
+.days_details_header{
+    position:sticky;
+}

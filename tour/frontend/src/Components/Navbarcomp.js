@@ -128,9 +128,12 @@ conformDelete(choice){
            <div className="container-row">
 
             {packages.map(function(package_item){
+                  console.log(package_item);
              return(
              <>
-            { /*
+            { 
+        
+            /*
               <Col md={{ span: 3 }}>
                 <Card className="card bg-light text-black">
                     <Card.Title className="title">{package_item.name}</Card.Title>
