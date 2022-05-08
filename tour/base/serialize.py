@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Packages, PackageDaysDetails
+from .models import Packages, PackageDaysDetails,Request
 
 
 class PackageSerializer(serializers.ModelSerializer):
@@ -14,6 +14,11 @@ class PackageDaysSerializer(serializers.ModelSerializer):
                                                     #update image every single time on updating some other data
     class Meta:
         model=PackageDaysDetails
+        fields="__all__"
+
+class RequestSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Request
         fields="__all__"
 
 

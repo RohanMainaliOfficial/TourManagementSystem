@@ -13,8 +13,9 @@ import Login from "./admin_login/login";
 import AddDays from "./Components/AddDays";
 import AddDaysForm from "./Components/AddDaysForm";
 import Dashboard from "./Components/Dashboard";
+import Request from "./Components/Request";
 import ProtectedRoute from './Components/ProtectedRoute';
-
+import  Booking_info from './Components/Book';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -24,6 +25,8 @@ ReactDOM.render(
         <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Login/>} />
+                    <Route path="/book" element={<Booking_info/>} />
+                    <Route path="/request" element={<Request/>} />
                     <Route path="/home" element=<ProtectedRoute element={<Navbarcomp/>} />  />
                     <Route path="/add" element=<ProtectedRoute element={<AddForm/>} />  />
                     <Route path="/update" element=<ProtectedRoute element={<Update/>} />  />

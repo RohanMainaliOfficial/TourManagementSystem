@@ -41,13 +41,10 @@ export default function Navbar() {
             <a href="/home">Home</a>
           </li>
           <li>
-            <a href="/about">Request</a>
+            <a href="/request">Users</a>
           </li>
           <li>
             <a href="/add-days">AddDetails</a>
-          </li>
-          <li>
-            <a href="/customers">Customers</a>
           </li>
         </ul>
       </div>

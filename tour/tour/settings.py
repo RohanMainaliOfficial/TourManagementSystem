@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'tour',
     'rest_framework',
     'corsheaders',
+    'django_email_verification',
 
 
 ]
@@ -136,3 +137,11 @@ MEDIA_URL='/media/'
 
 LOGIN_URL='/login'
 LOGIN_URL='/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'rohanmainali39@gmail.com'
+EMAIL_HOST_PASSWORD = 'cvwkxam8102'
+
